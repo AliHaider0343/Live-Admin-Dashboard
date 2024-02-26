@@ -453,7 +453,7 @@ def leads_data(sales_support_data):
         reasons_filter = st.selectbox('Select Reason ',
                                            ['All'] + reasons)
 
-        if reasons_filter != 'All' and lead_filter!="All" :
+        if reasons_filter != 'All' :
             filtered_df = filtered_df[filtered_df['Reason'] == reasons_filter]
 
     st.markdown('---')
