@@ -224,8 +224,12 @@ def base_data(merged_data):
                       value=f'{round(len(filtered_df[filtered_df["Conversation Catgegory"] == "Customer Support"]) / len(filtered_df) * 100, 2)} %')
         with col4:
             satisfation = filtered_df["Customer Satisfied"].value_counts()
-            st.metric(label="Satisfaction Percentage",
-                      value=f'{round(satisfation[True] / len(filtered_df) * 100, 2)} %')
+            if True in satisfation.values():
+                st.metric(label="Satisfaction Percentage",
+                          value=f'{round(satisfation[True] / len(filtered_df) * 100, 2)} %')
+            else:
+                st.metric(label="Satisfaction Percentage",
+                          value=f'0 %')
         with col5:
             st.metric(label="Total Customers", value=(filtered_df['Customer Name'].nunique()))
         with col6:
