@@ -473,8 +473,12 @@ def leads_data(sales_support_data):
             st.metric(label="Total Sales Support Chats", value=len(filtered_df))
         with col2:
             satisfation = filtered_df["Customer Satisfied"].value_counts()
-            st.metric(label="Satisfaction Percentage",
-                      value=f'{round(satisfation[True] / len(filtered_df) * 100, 2)} %')
+            if True in list(satisfation.values()):
+                st.metric(label="Satisfaction Percentage",
+                          value=f'{round(satisfation[True] / len(filtered_df) * 100, 2)} %')
+            else:
+                st.metric(label="Satisfaction Percentage",
+                          value=f'0 %')
         with col3:
             st.metric(label="Total Customers", value=(filtered_df['Customer Name'].nunique()))
         with col4:
