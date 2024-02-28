@@ -546,11 +546,9 @@ def supports_data(customer_support_data):
         with col2:
             try:
                 satisfation = filtered_df["Customer Satisfied"].value_counts()
-                st.metric(label="Satisfaction Percentage",
-                          value=f'{round(satisfation[True] / len(filtered_df) * 100, 2)} %')
+                st.metric(label="Satisfaction Percentage",value=f'{round(satisfation[True] / len(filtered_df) * 100, 2)} %')
             except:
-                st.metric(label="Satisfaction Percentage",
-                          value=f'0 %')
+                st.metric(label="Satisfaction Percentage", value=f'0 %')
         with col3:
             st.metric(label="Total Customers", value=(filtered_df['Customer Name'].nunique()))
         with col4:
